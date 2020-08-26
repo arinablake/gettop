@@ -16,11 +16,7 @@ Feature: Top banner feature
     Then User can see top banner 1
 
 
-  Scenario Outline: User can click on product banner and is taken to correct category page
-    Examples:
-      | search_word |
-      | ipad        |
-      | macbook     |
+  Scenario: User can click on product banner and is taken to correct category page
     Given Open https://gettop.us/ page
-    When Clicking on product banner <search_word>
-    Then User can see correct <search_word> page
+    Then Verify that each product banner is taking to a correct category page
+
