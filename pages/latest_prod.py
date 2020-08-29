@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 
 
 class LatestProd(Page):
-    TITLE = (By.CSS_SELECTOR, ' .section-title-main')
+    TITLE = (By.CSS_SELECTOR, '#content > div:nth-child(2)') #' .section-title-main')
     PRODUCT = (By.CSS_SELECTOR, '.product-small.box')
     SALE_ICON = (By.CSS_SELECTOR, '.badge-container')
     IMAGE = (By.CSS_SELECTOR, '.box-image')

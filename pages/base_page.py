@@ -45,3 +45,7 @@ class Page:
     def verify_number(self, num: int, *locator):
         actual_num_list = self.driver.find_elements(*locator)
         assert (len(actual_num_list)) == int(num), f'Expected {num}, but got {len(actual_num_list)}'
+
+    def verify_url(self, expected_url: str):
+        current_url = self.driver.current_url
+        assert current_url == expected_url, f'Expected {expected_url}, but got {current_url}'

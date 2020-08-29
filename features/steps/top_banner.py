@@ -39,6 +39,9 @@ RESULTS_HEADER = (By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs.uppercas
 
 @then('Verify that each product banner is taking to a correct category page')
 def matching_banners(context):
+    # context.app.topbanner.verify_matching_banners()
+
+
     ban_links = context.driver.find_elements(*BANNER_LINK)
 
     for x in range(len(ban_links)):
@@ -50,4 +53,11 @@ def matching_banners(context):
         assert ban_text in results_text, f'Expected {ban_text} to be in {results_text}'
         context.driver.back()
         context.app.topbanner.click_left_arrow()
+
+
+
+
+
+
+
 
