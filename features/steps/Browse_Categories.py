@@ -20,13 +20,14 @@ RESULTS_HEADER = (By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs.uppercas
 
 @then('Upon clicking on each category, correct page opens')
 def matching_categories(context):
-    cat_links = context.driver.find_elements(*CAT_LINK)
-
-    for x in range(len(cat_links)):
-        cat_to_click = context.driver.find_elements(*CAT_LINK)[x]
-        cat_text = cat_to_click.text
-        cat_to_click.click()
-        context.driver.wait.until(EC.visibility_of_element_located(RESULTS_HEADER))
-        results_text = context.driver.find_element(*RESULTS_HEADER).text
-        assert cat_text in results_text, f'Expected {cat_text} to be in {results_text}'
-        context.driver.back()
+    context.app.browse_cat.loop_browse_cat()
+    # cat_links = context.driver.find_elements(*CAT_LINK)
+    #
+    # for x in range(len(cat_links)):
+    #     cat_to_click = context.driver.find_elements(*CAT_LINK)[x]
+    #     cat_text = cat_to_click.text
+    #     cat_to_click.click()
+    #     context.driver.wait.until(EC.visibility_of_element_located(RESULTS_HEADER))
+    #     results_text = context.driver.find_element(*RESULTS_HEADER).text
+    #     assert cat_text in results_text, f'Expected {cat_text} to be in {results_text}'
+    #     context.driver.back()

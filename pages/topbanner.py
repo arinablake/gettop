@@ -1,5 +1,7 @@
 # from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
+from behave import given, when, then
+from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import Page
 
@@ -12,8 +14,8 @@ class TopBanner(Page):
     BOTTOMDOT = (By.CSS_SELECTOR, '.dot[aria-label="Page dot 2"]')
 
 
-    # BANNER_LINK = (By.CSS_SELECTOR, '.banner-link')
-    # RESULTS_HEADER = (By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs.uppercase')
+    BANNER_LINK = (By.CSS_SELECTOR, '.banner-link')
+    RESULTS_HEADER = (By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs.uppercase')
 
 
 
@@ -35,6 +37,20 @@ class TopBanner(Page):
     def click_banner(self):
         self.click(*self.BANNER_LINK)
 
+    def loop_ban_links(self):
+        ban_links = self.driver.find_elements(*self.BANNER_LINK)
+        for x in range(len(ban_links)):
+            ban_to_click = self.driver.find_elements(*self.BANNER_LINK)[x]
+            ban_text = ban_to_click.text
+            ban_to_click.click()
+            self.wait_for_element_located(*self.RESULTS_HEADER)
+            results_text = self.driver.find_element(*self.RESULTS_HEADER).text
+            assert ban_text in results_text, f'Expected {ban_text} to be in {results_text}'
+            self.driver.back()
+            self.click_left_arrow()
+
+
+                # .... rest of your code ....
     # def verify_matching_banners(self):
     #     ban_links = self.driver.find_elements(*BANNER_LINK)
     #
