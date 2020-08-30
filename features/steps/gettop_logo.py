@@ -14,11 +14,11 @@ def verify_url(context, expected_url):
     context.app.top_nav_menu.verify_page(expected_url)
 
 
-@when('User can search for {existing_product}')
-def search_prod(context, existing_product):
+@when('User can search for {product}')
+def search_prod(context, product):
     context.app.top_nav_menu.hover_icon()
     context.app.top_nav_menu.check_search_field()
-    context.app.top_nav_menu.search_word(existing_product)
+    context.app.top_nav_menu.search_word(product)
 
 
 @then('User can see {existing_product} in results')
@@ -26,11 +26,11 @@ def search_correct(context, existing_product):
     context.app.results_page.verify_result(existing_product)
 
 
-@when('1 User can search for {nonexisting_product}')
-def search_prod(context, nonexisting_product):
-    context.app.top_nav_menu.hover_icon()
-    context.app.top_nav_menu.check_search_field()
-    context.app.top_nav_menu.search_word(nonexisting_product)
+# @when('User can search for {nonexisting_product}')
+# def search_prod(context, nonexisting_product):
+#     context.app.top_nav_menu.hover_icon()
+#     context.app.top_nav_menu.check_search_field()
+#     context.app.top_nav_menu.search_word(nonexisting_product)
 
 @then('User sees {expected_text}')
 def search_correct(context, expected_text):

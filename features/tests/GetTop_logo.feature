@@ -1,10 +1,10 @@
 # Created by arina at 8/28/20
 Feature: GetTop logo
 
-  Scenario: GetTop logo takes to https://gettop.us/
-    Given Open https://gettop.us/ page
-    When GetTop logo is clickable
-    Then It takes to https://gettop.us/
+#  Scenario: GetTop logo takes to https://gettop.us/
+#    Given Open https://gettop.us/ page
+#    When GetTop logo is clickable
+#    Then It takes to https://gettop.us/
 
 
   Scenario Outline: User can search for existing product and sees correct results
@@ -24,5 +24,5 @@ Feature: GetTop logo
     |PIZZA    |
     |VITAMINS   |
     Given Open https://gettop.us/ page
-    When 1 User can search for <nonexisting_product>
+    When User can search for <nonexisting_product>
     Then User sees No products were found matching your selection
