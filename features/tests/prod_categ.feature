@@ -13,9 +13,9 @@ Feature: Top Nav Menu Product Categories feature
 #User can hover over Accessories and see correct menu options
 
 
-#  Scenario: Selecting
-#    Given Open https://gettop.us/ page
-#    Then Verify that each product link is taking to a correct category page
+  Scenario: Selecting
+    Given Open https://gettop.us/ page
+    Then Verify that each product link is taking to a correct category page
 #    When User can select MACBOOK product from top menu and correct page opens
 #    When User can select IPHONE product from top menu and correct page opens
 #    When User can select IPAD product from top menu and correct page opens
