@@ -41,3 +41,10 @@ def search_correct(context, expected_text):
 #     context.app.top_nav_menu.hover_icon()
 #     context.app.top_nav_menu.check_search_field()
 #     context.app.top_nav_menu.search_word(nonexisting_product)
+
+
+@when('Clicking on Account icon opens Login form')
+def verify_login_form(context):
+    context.app.top_nav_menu.click_user_icon()
+    context.app.top_nav_menu.check_login_form()
+
