@@ -5,6 +5,7 @@ from pages.latest_prod import LatestProd
 from pages.product import Product
 from pages.browse_cat import BrowseCat
 from pages.top_nav_menu import TopNavMenu
+from pages.footer_page import Footer
 
 
 class Application:
@@ -19,4 +20,5 @@ class Application:
         self.product = Product(self.driver)
         self.browse_cat = BrowseCat(self.driver)
         self.top_nav_menu = TopNavMenu(self.driver)
+        self.footer_page = Footer(self.driver)
 
