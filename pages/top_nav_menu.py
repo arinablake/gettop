@@ -30,7 +30,13 @@ class TopNavMenu(Page):
     CHECKOUT_BTN = (By.CSS_SELECTOR, '.woocommerce-mini-cart__buttons.buttons > a.button.checkout.wc-forward')
     REMOVE_BTN = (By.CSS_SELECTOR, '.remove.remove_from_cart_button')
 
-    CART_ICON_1 = (By.CSS_SELECTOR, '.cart-item.has-icon.has-dropdown .cart-icon.image-icon')
+    # CART_ICON_1 = (By.CSS_SELECTOR, '.cart-item.has-icon.has-dropdown .cart-icon.image-icon')
+
+    TOP_NAV_LINKS = (By.CSS_SELECTOR, '.header-nav a.nav-top-link:not(.nav-top-not-logged-in)')
+    RESULTS_HEADER = (By.CSS_SELECTOR, '.woocommerce-breadcrumb.breadcrumbs.uppercase')
+
+    PROD_LIST = (By.CSS_SELECTOR, '.menu-item.menu-item-type-post_type.menu-item-object-product a')
+    DROP_DOWN = (By.CSS_SELECTOR, '.sub-menu.nav-dropdown.nav-dropdown-default')
 
 
     def click_logo(self):
@@ -108,27 +114,43 @@ class TopNavMenu(Page):
         self.wait_for_element_appear(*self.WIDGET_ITEM)
         self.click(*self.REMOVE_BTN)
 
-    def hover_cart_icon1(self):
-        s_cart_icon = self.find_element(*self.CART_ICON_1)
-        self.actions.move_to_element(s_cart_icon).perform()
+    # def hover_cart_icon1(self):
+    #     s_cart_icon = self.find_element(*self.CART_ICON_1)
+    #     self.actions.move_to_element(s_cart_icon).perform()
 
+    def loop_prod_cat(self):
+        prod_links = self.driver.find_elements(*self.TOP_NAV_LINKS)
 
+        for x in range(len(prod_links)):
+            prod_to_click = self.driver.find_elements(*self.TOP_NAV_LINKS)[x]
+            prod_text = prod_to_click.text
+            prod_to_click.click()
+            self.wait_for_element_located(*self.RESULTS_HEADER)
+            results_text = self.driver.find_element(*self.RESULTS_HEADER).text
+            assert prod_text in results_text, f'Expected {prod_text} to be in {results_text}'
+            self.driver.back()
 
-    # SEARCH_INPUT = (By.ID, "twotabsearchtextbox")
-    # SEARCH_SUBMIT = (By.XPATH, "//input[@value='Go']")
-    # SELECT_DEPARTMENT = (By.ID, "searchDropdownBox")
-    # DISPLAYED_DEPARTMENT = (By.CSS_SELECTOR, 'div#nav-subnav a.nav-b')
-
-    # def search_word(self, search_word):
-    #     self.input(search_word, *self.SEARCH_INPUT)
-    #     self.click(*self.SEARCH_SUBMIT)
+    # def loop_hover_prod_cat(self):
+    #     prod_links = self.driver.find_elements(*self.TOP_NAV_LINKS)
     #
-    # def select_department(self, alias):
-    #     dep_selection_element = self.find_element(*self.SELECT_DEPARTMENT)
-    #     select = Select(dep_selection_element)
-    #     select.select_by_value(f'search-alias={alias}')
-    #     # select.select_by_index(index)
-    #     # select.select_by_visible_text('text')
+    #     for x in range(len(prod_links)):
+    #         prod_to_click = self.driver.find_elements(*self.TOP_NAV_LINKS)[x]
+    #         prod_text = prod_to_click.text
+    #         prod_text = prod_text.lower()
+    #         self.actions.move_to_element(prod_to_click).perform()
     #
-    # def verify_selected_department(self, selected_dep):
-    #     self.verify_text(selected_dep, *self.DISPLAYED_DEPARTMENT)
+    #         # drop_ds = self.driver.find_elements(*self.DROP_DOWN)
+    #         drop_d = self.driver.find_elements(*self.DROP_DOWN)[x]
+    #         prod_els = drop_d.find_elements(*self.PROD_LIST)
+    #
+    #         for x in range(len(prod_els)):
+    #             prod_el = drop_d.find_elements(*self.PROD_LIST)[x]
+    #             prod_el_text = prod_el.text
+    #             prod_el_text = prod_el_text.lower()
+    #             if prod_text == 'accessories' and prod_el_text == 'airpods with wireless charging case' or prod_el_text == 'airpods pro':
+    #                 pass
+    #             else:
+    #                 assert prod_text in prod_el_text, f'Expected {prod_text} to be in {prod_el_text}'
+
+
+
