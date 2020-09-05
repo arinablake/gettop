@@ -16,4 +16,7 @@ class ResultsPage(Page):
     def verify_empty_cart(self, expected_text: str):
         self.verify_text(expected_text.lower(), *self.EMPTY_CART)
 
+    # def verify_cat_result(self, cat_link_text):
+    #     self.verify_text(cat_link_text.upper(), *self.RESULTS_HEADER)
+
 

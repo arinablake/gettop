@@ -3,7 +3,7 @@ Feature: Latest products on sale feature
 
   Scenario: LATEST PRODUCTS ON SALE text is shown, Every product has Sale icon, image, product category, name, price, and star-rating
     Given Open https://gettop.us/ page
-    When LATEST PRODUCTS ON SALE text is shown
+    When LATEST PRODUCTS ON SALE text is shown (latest products)
     Then Every product has Sale icon, image, product category, name, price, and star-rating
 
   Scenario: User can click on heart icon to add to wishlist

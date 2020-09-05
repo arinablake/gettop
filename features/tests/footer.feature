@@ -6,7 +6,7 @@ Feature: Footer features
     Given Open https://gettop.us/ page
     When Footer shows Best Selling, Latest, Top Rated categories
 #    When All products in the footer have price, name, star-rating
-  #bug - no star rating in 1 prod - test fails
+  #bug - Footer - product - iPhone 11 doesn't have a star-rating
 
     When Copyright 2020 shown in footer
     When Footer has button to go back to top

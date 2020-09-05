@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-@when('{expected} text is shown 2')
+@when('{expected} text is shown (browse categories)')
 def verify_section_title(context, expected):
     context.app.browse_cat.verify_browse_title(expected)
 

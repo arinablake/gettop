@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
 
-@when('{expected} text is shown')
+@when('{expected} text is shown (latest products)')
 def verify_section_title(context, expected):
     context.app.latest_prod.verify_title(expected)
 
