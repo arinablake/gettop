@@ -1,5 +1,6 @@
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
+from selenium.webdriver import ActionChains
 
 
 class Product(Page):
@@ -98,9 +99,18 @@ class Product(Page):
     def hover_prod_image(self):
         self.wait_for_element_appear(*self.PROD_IMAGE)
         m_prod_img = self.driver.find_element(*self.PROD_IMAGE)
+        self.actions = ActionChains(self.driver)
         self.actions.move_to_element(m_prod_img).perform()
         m_prod_hi = self.driver.find_element(*self.HEART_ICON)
+        self.actions = ActionChains(self.driver)
         self.actions.move_to_element(m_prod_hi).perform()
+
+    # def hover_prod_image(self):
+    #     self.wait_for_element_appear(*self.PROD_IMAGE)
+    #     m_prod_img = self.driver.find_element(*self.PROD_IMAGE)
+    #     self.actions.move_to_element(m_prod_img).perform()
+    #     m_prod_hi = self.driver.find_element(*self.HEART_ICON)
+    #     self.actions.move_to_element(m_prod_hi).perform()
 
     def click_heart_icon(self):
         self.click(*self.HEART_ICON)
